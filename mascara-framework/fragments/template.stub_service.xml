@@ -1,0 +1,10 @@
+        <service
+            android:name="$NAME"
+            android:exported="false"
+            android:process=":Plugin$PROC_NUM"
+            android:label="@string/stub_name_service">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.morgoo.droidplugin.category.PROXY_STUB" />
+            </intent-filter>
+        </service>

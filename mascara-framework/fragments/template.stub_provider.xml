@@ -1,0 +1,6 @@
+<provider
+            android:name="$NAME"
+            android:authorities="${authorityName}_$PROC_NUM"
+            android:exported="false"
+            android:label="@string/stub_name_povider"
+            android:process=":Plugin$PROC_NUM"/>

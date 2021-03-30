@@ -1,0 +1,5 @@
+<receiver
+            android:name="$NAME"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":Plugin$PROC_NUM"/>

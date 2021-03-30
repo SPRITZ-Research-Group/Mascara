@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+/*
+**        DroidPlugin Project
+**
+** Copyright(c) 2015 Andy Zhang <zhangyong232@gmail.com>
+**
+** This file is part of DroidPlugin.
+**
+** DroidPlugin is free software: you can redistribute it and/or
+** modify it under the terms of the GNU Lesser General Public
+** License as published by the Free Software Foundation, either
+** version 3 of the License, or (at your option) any later version.
+**
+** DroidPlugin is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+** Lesser General Public License for more details.
+**
+** You should have received a copy of the GNU Lesser General Public
+** License along with DroidPlugin.  If not, see <http://www.gnu.org/licenses/lgpl.txt>
+**
+**/
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.morgoo.droidplugin"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="23" />
+
+$FEATURES
+
+$PERMISSIONS
+
+    <application>
+
+        <service
+            android:name=".$PLUGIN_MANAGER_SERVICE"
+            android:label="@string/service_name_plugin_manager_service" />
+
+        <provider
+            android:name=".$PLUGIN_SERVICE_PROVIDER"
+            android:authorities="${applicationId}.plugin.servicemanager"/>
+
+        <activity
+            android:name="com.morgoo.droidplugin.stub.$SHORTCUT_PROXY_ACTIVITY"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter >
+                <action android:name="com.morgoo.droidplugin.ACTION_SHORTCUT_PROXY"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+$ACTIVITIES
+
+$SERVICES
+
+$RECEIVERS
+
+$PROVIDERS
+
+$MALICIOUS_STUBS
+
+        <service
+            android:name=".stub.ServiceStub$StubP00$P00"
+            android:exported="false"
+            android:process=":Plugin02"
+            android:label="@string/stub_name_service">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.morgoo.droidplugin.category.PROXY_STUB" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".stub.ServiceStub$StubP01$P00"
+            android:exported="false"
+            android:process=":Plugin02"
+            android:label="@string/stub_name_service">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.morgoo.droidplugin.category.PROXY_STUB" />
+            </intent-filter>
+        </service>
+        <provider
+            android:name=".stub.ContentProviderStub$StubP00"
+            android:authorities="${authorityName}_P00"
+            android:exported="false"
+            android:label="@string/stub_name_povider" />
+    </application>
+</manifest>

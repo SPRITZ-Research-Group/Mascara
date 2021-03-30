@@ -1,0 +1,19 @@
+        <activity
+            android:name="$NAME"
+            android:allowTaskReparenting="true"
+            android:excludeFromRecents="true"
+            android:process=":Plugin$PROC_NUM"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:label="@string/stub_name_activity"
+            android:launchMode="$LAUNCH_MODE"
+            android:noHistory="true"
+            android:theme="@style/DroidPluginTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.morgoo.droidplugin.category.PROXY_STUB" />
+            </intent-filter>
+            <meta-data
+                android:name="com.morgoo.droidplugin.ACTIVITY_STUB_INDEX"
+                android:value="$INDEX" />
+        </activity>

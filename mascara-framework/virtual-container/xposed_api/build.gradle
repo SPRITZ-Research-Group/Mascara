@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    sourceSets {
+        main {
+            java.srcDirs += ['src/main/apacheCommonsLang']
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+}
+

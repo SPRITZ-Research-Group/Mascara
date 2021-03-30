@@ -1,0 +1,13 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+  <shortcut
+    android:shortcutId="compose"
+    android:enabled="true"
+    android:icon="$SHORTCUT_ICON"
+    android:shortcutShortLabel="@string/app_name">
+    <intent
+      android:action="android.intent.action.VIEW"
+      android:targetPackage="$PKGNAME"
+      android:targetClass="$MAIN_CLASS" />
+    <categories android:name="android.shortcut.conversation" />
+  </shortcut>
+</shortcuts>

