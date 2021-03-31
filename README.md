@@ -69,10 +69,10 @@ sudo php -S 0.0.0.0:80
 Below, we illustrate all the mechanisms used for the detection of the virtualized environments and how *Màscara* can bypass them.
 
 The analyzed anti-virtualization techniques come from the following four papers: 
-L. Shi, J. Fu, Z. Guo, and J. Ming. 2019. "Jekyll and Hyde" is Risky: Shared-Everything Threat Mitigation in Dual-Instance Apps. In Proceedings of the 17th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys '19).
-L. Zhang, Z. Yang, Y. He, M. Li, S. Yang, M. Yang, Y. Zhang, and Z. Qian. 2019. App in the Middle: Demystify Application Virtualization in Android and its Security Threats. In Abstracts of the 2019 SIGMETRICS/Performance Joint International Conference on Measurement and Modeling of Computer Systems (SIGMETRICS '19).
-Dai, D., Li, R., Tang, J., Davanian, A., & Yin, H. (2020, June). Parallel Space Traveling: A Security Analysis of App-Level Virtualization in Android. In Proceedings of the 25th ACM Symposium on Access Control Models and Technologies (pp. 25-32).
-T. Luo, C. Zheng, Z. Xu,  and X. Ouyang. (2017). Anti-Plugin: Don't let your app play as an Android plugin. Proceedings of Blackhat Asia.
+* L. Shi, J. Fu, Z. Guo, and J. Ming. 2019. "Jekyll and Hyde" is Risky: Shared-Everything Threat Mitigation in Dual-Instance Apps. In Proceedings of the 17th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys '19).
+* L. Zhang, Z. Yang, Y. He, M. Li, S. Yang, M. Yang, Y. Zhang, and Z. Qian. 2019. App in the Middle: Demystify Application Virtualization in Android and its Security Threats. In Abstracts of the 2019 SIGMETRICS/Performance Joint International Conference on Measurement and Modeling of Computer Systems (SIGMETRICS '19).
+* Dai, D., Li, R., Tang, J., Davanian, A., & Yin, H. (2020, June). Parallel Space Traveling: A Security Analysis of App-Level Virtualization in Android. In Proceedings of the 25th ACM Symposium on Access Control Models and Technologies (pp. 25-32).
+* T. Luo, C. Zheng, Z. Xu,  and X. Ouyang. (2017). Anti-Plugin: Don't let your app play as an Android plugin. Proceedings of Blackhat Asia.
 
 
 #####  Detection mechanism 1:
@@ -140,33 +140,43 @@ All the virtualization detection mechanisms have been embedded in a custom app c
 Below, we show the effectiveness of the existing anti-virtualization mechanisms when applied against the most popular virtualization-based apps on the Play Store and against *Màscara*.
 
 Virtualization detection against native environment:
+<br/>
 ![VEdetection against native environment](./demo/virtualizationdetection/native.gif)
 
 Virtualization detection against Màscara:
+<br/>
 ![VEdetection against Màscara](./demo/virtualizationdetection/Mascara.gif)
 
 Virtualization detection against com.exelliance.multiaccounts:
+<br/>
 ![VEdetection against com.exelliance.multiaccounts](./demo/virtualizationdetection/com.exelliance.multiaccounts.gif)
 
 Virtualization detection against com.in.parallel.accounts:
+<br/>
 ![VEdetection against com.in.parallel.accounts](./demo/virtualizationdetection/com.in.parallel.accounts.gif)
 
 Virtualization detection against com.lbe.parallel.intl:
+<br/>
 ![VEdetection against com.lbe.parallel.intl](./demo/virtualizationdetection/com.lbe.parallel.intl.gif)
 
 Virtualization detection against com.ludashi.dualspace:
+<br/>
 ![VEdetection against com.ludashi.dualspace](./demo/virtualizationdetection/com.ludashi.dualspace.gif)
 
 Virtualization detection against com.ludashi.superboost:
+<br/>
 ![VEdetection against com.ludashi.superboost](./demo/virtualizationdetection/com.ludashi.superboost.gif)
 
 Virtualization detection against com.parallel.space.lite:
+<br/>
 ![VEdetection against com.parallel.space.lite](./demo/virtualizationdetection/com.parallel.space.lite.gif)
 
 Virtualization detection against com.polestar.domultiple:
+<br/>
 ![VEdetection against com.polestar.domultiple](./demo/virtualizationdetection/com.polestar.domultiple.gif)
 
 Virtualization detection against info.cloneapp.mochat.in.goast:
+<br/>
 ![VEdetection against info.cloneapp.mochat.in.goast](./demo/virtualizationdetection/info.cloneapp.mochat.in.goast.gif)
 
 
