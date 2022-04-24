@@ -1,20 +1,20 @@
 ## Configuration
 
 Starting from each __victim_app.apk__ file this framework will create two malicious files:
-*    __malicious_addon.apk__ 
+*    __malicious_addon.apk__
 *    __malicious.apk__
 
 To generate them, run the following command:
 
 ```
-python3 customize.py <directory_apk_victim_app> <directory_malicious_addon_icons> <directory_output> <package_name_malicious_addon> <IP_address>
+python3 customize.py <directory_apk_victim_app> <directory_malicious_addon_icons> <output_directory> <package_name_malicious_addon> <IP_address>
 ```
 
 *    __<directory_apk_victim_app>__: contains the apk files of the victim apps
 
 *   __<directory_malicious_addon_icons>__: contains the icons that will be associated to the malicious add-ons. PNG format is required for the icons
 
-*   __<directory_output>__: any directory to redirect the output
+*   __<output_directory>__: any directory to redirect the output
 
 *   __<package_name_malicious_addon>__: package of the malicious add-ons, you can pick any
 
@@ -27,7 +27,7 @@ To launch the attack you need to:
 
 1) Connect the computer and the smartphone to the same network
 
-2) Install the victim app on the smartphone 
+2) Install the victim app on the smartphone
 ```
 adb install -g victim_app.apk
 ```
@@ -39,7 +39,7 @@ adb install -g maliciousaddon.apk
 
 4) Create a directory for the server and save there the malicious.apk and the server file index.php
 
-5) From the directory of the server, open a terminal and launch the server with 
+5) From the directory of the server, open a terminal and launch the server with
 ```
 sudo php -S 0.0.0.0:80
 ```
@@ -47,6 +47,12 @@ sudo php -S 0.0.0.0:80
 6) On the smartphone, launch the malicious add-on (the malicious.apk should be downloaded from the server)
 
 7) On the smartphone, go to your Home page and launch the icon of the victim app
+
+## Example
+As an illustrative example, we provide the thermometer app as a victim app of our attack. The victim directory already contains the victim app apk, while the icon directory contains the image used by the malware to create the shortcut on the user screen. To generate the malicious add-on, launch this command (the <output_directory> should be outside the project directory)
+```
+python3 customize.py victim/ icon/ <output_directory> <package_name_malicious_addon> <IP_address>
+```
 
 ## Attack Demo
 
@@ -68,7 +74,7 @@ sudo php -S 0.0.0.0:80
 
 Below, we illustrate all the mechanisms used for the detection of the virtualized environments and how *Màscara* can bypass them.
 
-The analyzed anti-virtualization techniques come from the following four papers: 
+The analyzed anti-virtualization techniques come from the following four papers:
 * L. Shi, J. Fu, Z. Guo, and J. Ming. 2019. "Jekyll and Hyde" is Risky: Shared-Everything Threat Mitigation in Dual-Instance Apps. In Proceedings of the 17th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys '19).
 * L. Zhang, Z. Yang, Y. He, M. Li, S. Yang, M. Yang, Y. Zhang, and Z. Qian. 2019. App in the Middle: Demystify Application Virtualization in Android and its Security Threats. In Abstracts of the 2019 SIGMETRICS/Performance Joint International Conference on Measurement and Modeling of Computer Systems (SIGMETRICS '19).
 * Dai, D., Li, R., Tang, J., Davanian, A., & Yin, H. (2020, June). Parallel Space Traveling: A Security Analysis of App-Level Virtualization in Android. In Proceedings of the 25th ACM Symposium on Access Control Models and Technologies (pp. 25-32).
@@ -91,7 +97,7 @@ Through the API of the *PackageManager*, it is possible to return the list of al
 Through the APIs *getRecentTasks(int,int)* and *getRunningTasks(int)* it is possible to see the list of all running tasks (a task is a collection of activities). From Android level 21 those APIs are restricted to return only the caller's own tasks. Moreover, the malicious app run in the virtual environment has only services and no activities.
 
 #####  Detection mechanism 6:
-Through the API *getRunningServices(int)* it is possible to return the list of running services. In *Màscara*, this method is hooked using *Whale* and the return value reveals only the services of the plugin app and not of the malicious one. 
+Through the API *getRunningServices(int)* it is possible to return the list of running services. In *Màscara*, this method is hooked using *Whale* and the return value reveals only the services of the plugin app and not of the malicious one.
 
 #####  Detection mechanism 7:
 The API *getRunningAppProcess(int)* returns the list of processes running on a device. By running this method in a virtualized environment, it is possible to see two processes: the container application and the virtualized one. In *Màscara* the two processes share the same UID. However, though the *Dynamic Proxy API module* of DroidPlugin the method is hooked and the the return value hides all the suspicious process names.
@@ -103,7 +109,7 @@ In a virtualized environment an application can check the list of processes thou
 Through the API *getApplicationInfo* an application can check whether its private directory follows the default Android pattern. In *Màscara* this method is hooked though the *Dynamic Proxy API module* of DroidPlugin so that the return value always matches the default Android directory pattern.
 
 #####  Detection mechanism 10:
-Through the object *ApplicationInfo* an application can check the location of its APK by inspecting the field *sourceDir*. Since the Android framework returns this object for a given package name, in *Màscara* the package name is associated to the victim app one. 
+Through the object *ApplicationInfo* an application can check the location of its APK by inspecting the field *sourceDir*. Since the Android framework returns this object for a given package name, in *Màscara* the package name is associated to the victim app one.
 
 #####  Detection mechanism 11:
 In a virtualized environment the process memory contains also the malicious add-on path. In *Màscara* any access to  *”/proc/self/maps”* is disabled by hooking the constructor of the class *File* though *Whale*.
@@ -178,6 +184,3 @@ Virtualization detection against com.polestar.domultiple:
 Virtualization detection against info.cloneapp.mochat.in.goast:
 <br/>
 ![VEdetection against info.cloneapp.mochat.in.goast](./demo/virtualizationdetection/info.cloneapp.mochat.in.goast.gif)
-
-
-
